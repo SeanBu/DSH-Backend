@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     available: {type: Boolean, default: true },
     rating: {type: Number },
     tutorReviews: [{type: mongoose.Types.ObjectId, ref: 'Reviews' }],
-    classes: [{type: mongoose.Types.ObjectId, ref: 'Class'}]
+    courses: [{type: mongoose.Types.ObjectId, ref: 'Course'}]
 }, {
     timestamps: true, toJSON: {
         transform: (_doc, ret) => {
