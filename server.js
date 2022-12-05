@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const methodOverride = requrie("method-override");
 
 require("dotenv").config();
+require("./config/db.connection.js");
 
 const PORT = process.env.PORT;
 const mainController = require('./controllers/mainController');
