@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const methodOverride = requrie("method-override");
+const methodOverride = require("method-override");
 
 require("dotenv").config();
 require("./config/db.connection.js");
