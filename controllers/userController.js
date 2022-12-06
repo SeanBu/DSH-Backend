@@ -39,4 +39,30 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+//! ---------------------User Info Update Route-----------------------
+router.put("/:id/updateinfo", async (req, res) => {
+  try {
+    const updateUserInfo = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error });
+  }
+});
+
+//! ---------------------User Skills Update Route-----------------------
+router.put("/:id/updateskills", async (req, res) => {
+  try {
+    const updateUserSkills = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error });
+  }
+});
+
 module.exports = router;

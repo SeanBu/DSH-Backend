@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema(
     acceptStudents: { type: Boolean, default: true },
     accountBio: { type: String },
     location: { type: String },
-    experience: { type: String },
+    yearsOfExperience: { type: Number },
     tutor: { type: Boolean },
     tutorReviews: [{ type: mongoose.Types.ObjectId, ref: "Reviews" }],
     courses: [{ type: mongoose.Types.ObjectId, ref: "Course" }],
