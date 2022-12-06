@@ -56,9 +56,11 @@ router.put("/:id/updateinfo", async (req, res) => {
 //! ---------------------User Skills Update Route-----------------------
 router.put("/:id/updateskills", async (req, res) => {
   try {
-    const updateUserSkills = await User.findByIdAndUpdate(
-      req.params.id,
-      req.body
+    const updateUserSkills = await User.updateOne(
+      { _id: req.params.id },
+      {
+        $push: { skills: req.body.skills },
+      }
     );
     res.status(201).send("Successful!");
   } catch (error) {
