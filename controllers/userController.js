@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 //! ---------------------User Show Route-----------------------
 router.get("/:id", async (req, res, next) => {
   try{
-    const showUser = await User.findById(req.params.id, 'Reviews').populate("Reviews");
+    const showUser = await User.findById(req.params.id, 'tutorReviews').populate("tutorReviews");
     res.status(201).send(showUser);
   } catch (error) {
     console.log(error);
