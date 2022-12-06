@@ -6,7 +6,7 @@ require("dotenv").config();
 
 //! ------------------------Importing Models-------------------------
 const { User } = require("../models");
-//const { createUserToken, requireToken } = require("../middleware/auth");
+const { createUserToken, requireToken } = require("../middleware/auth");
 
 //test route
 router.get("/", (req, res) => {
@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
 //! ---------------------Auth Register Route-----------------------
 router.post("/register", async (req, res, next) => {
   try {
-    console.log(saltRounds);
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(req.body.password, salt);
     const pwStore = req.body.password;
@@ -57,17 +56,19 @@ router.post("/login", async (req, res, next) => {
 });
 
 //! ---------------------Auth Logout Route-----------------------
-router.post("/login", async (req, res, next) => {
+router.get("/logout", requireToken, (req, res, next) => {
   try {
-    const loggingUser = req.body.username;
-    //! make sure that front-end is turned into JSON first
-    const foundUser = await User.findOne({ username: loggingUser });
-    const token = await createUserToken(req, foundUser);
-    // console.log("created token:", token);
-    res.status(200).json({ user: foundUser, isLoggedIn: true, token });
+    const currentUser = req.user.username;
+    console.log(currentUser);
+    delete req.user;
+    res.status(200).json({
+      message: `${currentUser} currently logged out`,
+      isLoggedIn: false,
+      token: "",
+    });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ error: error.message });
+    res.status(400).json(error);
   }
 });
 
