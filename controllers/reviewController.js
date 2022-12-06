@@ -36,7 +36,7 @@ router.post("/new", async (req, res, next) => {
 //! --------------------------Show Route----------------------------
 router.get("/:id", async (req, res, next) => {
   try {
-    const showReview = await Reviews.findById(req.params.id);
+    const showReview = await Reviews.findById(req.params.id).populate("tutorReview").populate("studentReviewer");
 
     res.status(200).json(showReview);
   } catch (err) {
