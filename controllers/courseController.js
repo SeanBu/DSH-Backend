@@ -37,7 +37,7 @@ router.post("/new", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const showCourse = await Course.findById(req.params.id);
-    res.status(201).send("Successful!");
+    res.status(201).send(showCourse);
   } catch (err) {
     console.log(err);
     res.redirect("/404");
@@ -49,6 +49,7 @@ router.get("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     const deleteCourse = await Course.findByIdAndDelete(req.params.id);
+    res.status(200).json(deleteCourse);
   } catch (err) {
     console.log(err);
     res.redirect("/404");
@@ -60,6 +61,7 @@ router.delete("/:id", async (req, res, next) => {
 router.get("/:id/edit", async (req, res, next) => {
   try {
     const editCourse = await Course.findById(req.params.id);
+    res.status(201).send("Successful!");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
@@ -74,6 +76,7 @@ router.put("/:id", async (req, res, next) => {
       req.params.id,
       req.body
     );
+    res.status(201).send("Successful!");
   } catch (err) {
     console.log(err);
     res.redirect("/404");

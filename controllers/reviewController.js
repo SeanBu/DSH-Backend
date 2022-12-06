@@ -63,6 +63,7 @@ router.delete("/:id", async (req, res, next) => {
 router.get("/:id/edit", async (req, res, next) => {
   try {
     const editReview = await Reviews.findById(req.params.id);
+    res.status(201).send("Successful!");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
@@ -77,6 +78,7 @@ router.put("/:id", async (req, res, next) => {
       req.params.id,
       req.body
     );
+    res.status(201).send("Successful!");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
