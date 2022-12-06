@@ -46,6 +46,7 @@ router.put("/:id/updateinfo", async (req, res) => {
       req.params.id,
       req.body
     );
+    res.status(201).send("Successful!");
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error });
@@ -59,6 +60,7 @@ router.put("/:id/updateskills", async (req, res) => {
       req.params.id,
       req.body
     );
+    res.status(201).send("Successful!");
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error });
