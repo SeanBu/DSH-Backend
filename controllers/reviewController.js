@@ -25,6 +25,7 @@ router.post("/new", async (req, res, next) => {
     //
     //* need to push review id into user review array.  but what are we reviewing, user or course?
     //todo __I think user?
+    res.status(201).send("Successful!");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
