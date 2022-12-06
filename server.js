@@ -15,16 +15,24 @@ const {
 
 const app = express();
 
+//! ------------------------MIDDLEWARE-------------------------
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
 app.use("/user", userController);
-// app.use("/review", reviewController);
-// app.use("/course", courseController);
+app.use("/review", reviewController);
+app.use("/course", courseController);
 
+//! ------------------------Test Home Route-------------------------
 app.get("/", (req, res) => {
   res.send("Dont Swear Here");
 });
 
+//! ------------------------404 Route-------------------------
+app.get("*", (req, res) => {
+  res.send("404");
+});
+
+//! ------------------------LISTENER-------------------------
 app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`));
