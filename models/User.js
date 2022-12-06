@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema(
     accountBio: { type: String },
     location: { type: String },
     experience: { type: String },
+    tutor: { type: Boolean },
     tutorReviews: [{ type: mongoose.Types.ObjectId, ref: "Reviews" }],
     courses: [{ type: mongoose.Types.ObjectId, ref: "Course" }],
   },
