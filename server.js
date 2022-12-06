@@ -11,7 +11,7 @@ const {
   userController,
   reviewController,
   courseController,
-} = require("./controllers");
+} = require("./controllers/index");
 
 const app = express();
 
@@ -20,8 +20,8 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
 app.use("/user", userController);
-app.use("/review", reviewController);
-app.use("/course", courseController);
+// app.use("/review", reviewController);
+// app.use("/course", courseController);
 
 app.get("/", (req, res) => {
   res.send("Dont Swear Here");
