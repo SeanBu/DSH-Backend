@@ -56,10 +56,11 @@ router.put("/:id/updateinfo", async (req, res) => {
 //! ---------------------User Skills Update Route-----------------------
 router.put("/:id/updateskills", async (req, res) => {
   try {
+    console.log(req.body);
     const updateUserSkills = await User.updateOne(
       { _id: req.params.id },
       {
-        $push: { skills: req.body.skills },
+        $push: { skills: { $each: req.body } },
       }
     );
     res.status(201).send("Successful!");

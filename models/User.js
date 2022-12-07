@@ -10,11 +10,6 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, required: [true, "Password required."] },
     firstName: { type: String, required: [true, "Please enter a first name."] },
     lastName: { type: String, required: [true, "Please enter a last name."] },
-    email: {
-      type: String,
-      unique: [true, "Email already in use."],
-      required: [true, "Please enter a username."],
-    },
     skills: [{ type: String }],
     available: { type: Boolean, default: true },
     rating: { type: Number },
