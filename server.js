@@ -11,6 +11,7 @@ const {
   userController,
   reviewController,
   courseController,
+  authController,
 } = require("./controllers/index");
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(methodOverride("_method"));
 app.use("/user", userController);
 app.use("/review", reviewController);
 app.use("/course", courseController);
+app.use("/auth", authController);
 
 //! ------------------------Test Home Route-------------------------
 app.get("/", (req, res) => {
